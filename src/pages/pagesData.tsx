@@ -1,8 +1,10 @@
 import { routerType } from "../types/router.types";
-import About from "./About";
-import Home from "./Home";
-import Login from "./Login";
-import Register from "./Register";
+import About from "./AboutPage";
+import ContactPage from "./ContactPage";
+import Home from "./HomePage";
+import Login from "./LoginPage";
+import Register from "./RegisterPage";
+import SearchPage from "./SearchPage";
 const pagesData: routerType[] = [
   {
     path: "",
@@ -16,7 +18,7 @@ const pagesData: routerType[] = [
   },
   {
     path: "contact",
-    element: <div>Contact</div>,
+    element: <ContactPage />,
     title: "contact"
   },{
     path:"login",
@@ -27,6 +29,11 @@ const pagesData: routerType[] = [
     path:"register",
     element:<Register/>,
     title:"register"
+  },
+  {
+    path:"search",
+    element:<SearchPage/>,
+    title:"search"
   },
   {
     path: "*",

@@ -1,13 +1,18 @@
 import Content from "../components/Content";
 import side_img from "../assets/images/SideImage.png";
-import { GoogleLoginButton } from "../services/AuthService";
+import { GoogleLoginButton } from "../services/GoogleAuthService";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useAuthService } from "../services/AuthService";
+import { useUser } from "../contexts/UserContext";
+import { BeError } from '../types/types';
 
 const Login = () => {
+    const { login } = useUser();
+    const { loginService } = useAuthService();
     const [emailOrPhone, setEmailOrPhone] = useState("");
     const [password, setPassword] = useState("");
-
+    const [error, setError] = useState<BeError | null>(null);
     const handleChangeEmailOrPhone = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmailOrPhone(e.target.value);
     };
@@ -16,25 +21,30 @@ const Login = () => {
         setPassword(e.target.value);
     };
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        setError(null);
         event.preventDefault();
         // Your login logic here
-        console.log("Logging in with:", { emailOrPhone, password });
-
+        await loginService({ user_email_or_phone: emailOrPhone, user_password: password }, login, setError);
         // Clearing fields after submission (optional)
-        setEmailOrPhone("");
-        setPassword("");
+
+        // setEmailOrPhone("");
+        // setPassword("");
     };
 
     return (
         <Content>
             <div className="flex flex-row mb-20 justify-center items-center gap-10">
                 <img src={side_img} alt="side-img" className="w-1/3" />
-                <form className="w-1/3 flex flex-col gap-4" onSubmit={handleSubmit}>
+                <form className="w-1/3 flex flex-col gap-2" onSubmit={handleSubmit}>
                     <div>
                         <h1 className="font-bold text-2xl mb-10">Login to Hira E-commerce</h1>
                         <p>Enter your details below</p>
                     </div>
+                    {
+                        error && error.type === "user" ? <p className="text-red-500 h-6 text-xs ml-2">{error.message}</p> :
+                            <p className="h-6"></p>
+                    }
                     <div className="w-72">
                         <div className="relative w-full min-w-[200px] h-10">
                             <input
@@ -52,6 +62,10 @@ const Login = () => {
                             </label>
                         </div>
                     </div>
+                    {
+                        error && error.type === "password" ? <p className="text-red-500 h-6 text-xs ml-2">{error.message}</p> :
+                            <p className="h-6"></p>
+                    }
                     <div className="w-72">
                         <div className="relative w-full min-w-[200px] h-10">
                             <input
@@ -69,16 +83,17 @@ const Login = () => {
                             </label>
                         </div>
                     </div>
+
                     <div className="flex items-center justify-start gap-4 text-orange-500">
                         <button type="submit" className="h-12 w-32 bg-orange-600 text-white rounded-lg">
                             Login
                         </button>
                         <Link to="#" className="text-blue-gray-500 hover:text-blue-gray-700">Forgot Password?</Link>
                     </div>
-                    
+
                     <label>Or</label>
                     <GoogleLoginButton />
-                    
+
                     <div>
                         <p className="text-gray-500">Don't have an account? <Link to="/register" className="text-blue-gray-500 hover:text-blue-gray-700">Sign up now</Link></p>
                     </div>
