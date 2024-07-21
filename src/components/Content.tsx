@@ -6,7 +6,7 @@ interface ContentProps {
 
 const Content: React.FC<ContentProps> = ({ children }) => {
     return (
-        <div className='mt-20 min-h-svh'>
+        <div className='min-h-svh content'>
             {children}
         </div>
     );

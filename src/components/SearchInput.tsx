@@ -25,7 +25,7 @@ const Search = () => {
     };
 
     return (
-        <form className="max-w-md mx-auto w-80" onSubmit={handleSubmit}>
+        <form className="max-w-md mx-auto w-full bg-gray-400 opacity-85" onSubmit={handleSubmit}>
             <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
                 Search
             </label>
@@ -40,7 +40,7 @@ const Search = () => {
                     id="default-search"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                    className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg  focus:ring-blue-500 focus:border-blue-500"
                     placeholder="What are you looking for?"
                     required
                 />

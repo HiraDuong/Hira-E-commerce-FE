@@ -1,7 +1,6 @@
-// src/services/AuthService.tsx
 import { GoogleOAuthProvider, GoogleLogin, CredentialResponse } from '@react-oauth/google';
 import { useNavigate } from 'react-router-dom';
-import {jwtDecode} from 'jwt-decode'; // Import jwtDecode chính xác từ jwt-decode
+import {jwtDecode} from 'jwt-decode';
 
 const googleAuthKey: string = import.meta.env.VITE_GOOGLE_LOG_IN_CLIENT_ID as string;
 

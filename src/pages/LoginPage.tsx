@@ -34,18 +34,19 @@ const Login = () => {
 
     return (
         <Content>
-            <div className="flex flex-row mb-20 justify-center items-center gap-10">
-                <img src={side_img} alt="side-img" className="w-1/3" />
-                <form className="w-1/3 flex flex-col gap-2" onSubmit={handleSubmit}>
+            <div className="flex flex-row mb-20 justify-center items-center gap-10 login">
+                <img src={side_img} alt="side-img" className="img-bg" />
+                <form className="
+                flex flex-col gap-2 form" onSubmit={handleSubmit}>
                     <div>
                         <h1 className="font-bold text-2xl mb-10">Login to Hira E-commerce</h1>
                         <p>Enter your details below</p>
                     </div>
                     {
                         error && error.type === "user" ? <p className="text-red-500 h-6 text-xs ml-2">{error.message}</p> :
-                            <p className="h-6"></p>
+                            <p></p>
                     }
-                    <div className="w-72">
+                    <div className="w-3/5">
                         <div className="relative w-full min-w-[200px] h-10">
                             <input
                                 required={true}
@@ -64,9 +65,9 @@ const Login = () => {
                     </div>
                     {
                         error && error.type === "password" ? <p className="text-red-500 h-6 text-xs ml-2">{error.message}</p> :
-                            <p className="h-6"></p>
+                            <p></p>
                     }
-                    <div className="w-72">
+                    <div className="w-3/5">
                         <div className="relative w-full min-w-[200px] h-10">
                             <input
                                 required={true}
@@ -92,8 +93,9 @@ const Login = () => {
                     </div>
 
                     <label>Or</label>
+                    <div className="w-3/5">
                     <GoogleLoginButton />
-
+                    </div>
                     <div>
                         <p className="text-gray-500">Don't have an account? <Link to="/register" className="text-blue-gray-500 hover:text-blue-gray-700">Sign up now</Link></p>
                     </div>

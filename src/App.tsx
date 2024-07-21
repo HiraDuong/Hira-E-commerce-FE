@@ -14,8 +14,8 @@ function App() {
             <Link to="/">
               <p className='text-xl font-bold ml-6'>Hira E-Commerce</p>
             </Link>
-          </header>
           <Nav />
+          </header>
           <Router />
           <Footer />
         </>

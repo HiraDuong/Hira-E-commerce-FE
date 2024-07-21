@@ -65,18 +65,18 @@ const Register = () => {
     };
     return (
         <Content>
-            <div className="flex flex-row mb-20 justify-center items-center gap-10">
-                <img src={side_img} alt="side-img" className="w-1/3" />
-                <form action="" className="w-1/4 flex flex-col gap-4" onSubmit={handleSubmit}>
+            <div className="flex flex-row mb-20 justify-center items-center gap-10 register">
+                <img src={side_img} alt="side-img" className="img-bg" />
+                <form action="" className="form flex flex-col gap-4" onSubmit={handleSubmit}>
                     <div>
-                        <h1 className="font-bold text-2xl mb-10">Register to Hira E-commerce</h1>
+                        <h1 className="font-bold text-2xl">Register to Hira E-commerce</h1>
                         <p>Enter your details below</p>
                     </div>
                     {
                         beError?<p className="text-red-500 h-8 ml-2">{beError.message}</p> :
-                        <p className="text-red-500 h-8"></p>
+                        <p className="text-red-500 h-8 hidden"></p>
                     }
-                    <div className="w-full">
+                    <div className="w-3/5">
                         <div className="relative w-full min-w-[200px] h-10">
                             <input
                                 required={true}
@@ -90,7 +90,7 @@ const Register = () => {
                             </label>
                         </div>
                     </div>
-                    <div className="w-full">
+                    <div className="w-3/5">
                         <div className="relative w-full min-w-[200px] h-10">
                             <input
                                 required={true}
@@ -105,7 +105,7 @@ const Register = () => {
                         </div>
                         {emailError && <p className="text-red-700">{emailError}</p>}
                     </div>
-                    <div className="w-full">
+                    <div className="w-3/5">
                         <div className="relative w-full min-w-[200px] h-10">
                             <input
                                 required={true}
@@ -120,7 +120,7 @@ const Register = () => {
                             </label>
                         </div>
                     </div>
-                    <div className="w-full">
+                    <div className="w-3/5">
                         <div className="relative w-full min-w-[200px] h-10">
                             <input
                                 required={true}
@@ -135,7 +135,7 @@ const Register = () => {
                             </label>
                         </div>
                     </div>
-                    <div className="w-full">
+                    <div className="w-3/5">
                         <div className="relative w-full min-w-[200px] h-10">
                             <input
                                 required={true}
@@ -152,7 +152,7 @@ const Register = () => {
                         {passwordError && <p className="text-red-700">{passwordError}</p>}
                     </div>
                     <div className="flex items-center justify-start gap-4 text-orange-500">
-                        <button type="submit" className="h-12 w-full bg-orange-700 text-white rounded-lg">
+                        <button type="submit" className="h-12 w-3/5 bg-orange-700 text-white rounded-lg">
                             Create Account
                         </button>
                     </div>
